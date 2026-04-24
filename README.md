@@ -1,1 +1,69 @@
+# INVII - Autenticación de Carteras
 
+Este repositorio es una versión modular del notebook `Autenticacion_Carteras.ipynb`.
+
+## Flujo fiel al notebook
+
+1. Dataset genuino organizado por modelo y cartera.
+2. Split por cartera en `train`, `val` y `test`.
+3. Aumentación en entrenamiento con:
+   - RandomResizedCrop
+   - ColorJitter
+   - GaussianBlur
+   - RandomErasing
+4. Modelo EfficientNet-B0 con embedding de 256 dimensiones.
+5. Cálculo del centro one-class.
+6. Entrenamiento con OneClassLoss.
+7. Cálculo de distancias.
+8. Cálculo de threshold por percentil.
+9. Generación de fake hard con oclusión, affine warp, color jitter y blur.
+10. Evaluación ROC-AUC.
+11. Predicción por cartera.
+
+## Estructura esperada del dataset
+
+Colocar el dataset genuino aquí:
+
+```text
+data/genuine/chanel/
+└── modelo/
+    └── bag_id/
+        ├── img1.jpg
+        ├── img2.jpg
+        └── ...
+```
+
+Ejemplo:
+
+```text
+data/genuine/chanel/classic/
+└── 112/
+    ├── front.jpg
+    ├── logo.jpg
+    └── zipper.jpg
+```
+
+## Ejecutar pipeline completo
+
+```bash
+pip install -r requirements.txt
+python src/main.py
+```
+
+## Predicción de una cartera
+
+Coloca imágenes de una cartera en:
+
+```text
+handbag/112/
+```
+
+Ejecuta:
+
+```bash
+python src/predict_bag.py --bag_dir handbag/112
+```
+
+## Nota
+
+El dataset no se sube a GitHub porque pesa más de 1GB.
