@@ -1,8 +1,42 @@
-# INVII - Autenticaci贸n de Carteras
+# Autenticación Automática de Carteras de Lujo mediante Deep Learning y Visión por Computadora
 
-Este repositorio es una versi贸n modular del notebook `Autenticacion_Carteras.ipynb`.
+## Descripción
 
-## Documentaci贸n
+Este proyecto desarrolla un sistema de autenticación automática de carteras de lujo mediante inteligencia artificial y análisis de imágenes capturadas con teléfonos móviles.  
+El enfoque utiliza modelos de aprendizaje profundo capaces de analizar múltiples componentes del producto, como logotipos, costuras, texturas y herrajes, permitiendo una evaluación más precisa frente a falsificaciones de alta calidad.  
+Se implementa un pipeline completo que incluye procesamiento de datos, entrenamiento, validación y evaluación con métricas como AUC-ROC y F1-score.  
+El sistema busca mejorar la precisión, objetividad y escalabilidad del proceso de autenticación en escenarios reales del contexto peruano.
+
+
+## Objetivo General
+
+Desarrollar un sistema de autenticación automática de artículos de moda frente a falsificaciones de alta calidad, basado en el análisis de imágenes capturadas mediante teléfonos celulares, que permita mejorar la precisión, objetividad y escalabilidad del proceso de verificación en el contexto peruano.
+
+## Tecnologías Utilizadas
+
+- **Python**: Lenguaje principal utilizado para el desarrollo del pipeline de procesamiento, entrenamiento y evaluación del modelo.
+- **PyTorch**: Framework de deep learning empleado para la construcción y entrenamiento del modelo.
+- **Torchvision**: Librería utilizada para modelos preentrenados (EfficientNet-B0) y transformaciones de imágenes.
+- **NumPy**: Manejo de operaciones numéricas y cálculo de distancias entre embeddings.
+- **Pillow (PIL)**: Carga y procesamiento básico de imágenes.
+- **Scikit-learn**: Evaluación del modelo mediante métricas como ROC-AUC y curva ROC.
+- **Matplotlib**: Visualización de resultados y métricas.
+- **TQDM**: Monitoreo del progreso durante el entrenamiento.
+
+## Modelo Utilizado
+
+El sistema utiliza **EfficientNet-B0** como extractor de características visuales, generando embeddings representativos de cada imagen.
+
+Se implementa un enfoque de **One-Class Learning**, donde el modelo se entrena únicamente con imágenes de carteras auténticas. A partir de ello, se calcula un centro de embeddings y se evalúan nuevas imágenes midiendo su distancia respecto a este centro.
+
+La decisión final se basa en un umbral definido por percentiles:
+
+-  **Auténtico**: si la distancia es menor al umbral  
+-  **Rechazado**: si la distancia supera el umbral  
+
+Este enfoque permite detectar falsificaciones de alta calidad de manera eficiente, objetiva y escalable.
+
+## Documentaci贸n del Sprint  
 
 - 馃摌 Reporte completo del proyecto:  
   [Proyecto Pipeline](docs/Proyecto_Pipeline.pdf)
@@ -14,6 +48,7 @@ Este documento incluye:
 - Modelo baseline (EfficientNet-B0)
 - M茅tricas (ROC-AUC, p茅rdidas, distancias)
 - Resultados experimentales
+
 
 ## Flujo en base al notebook
 
