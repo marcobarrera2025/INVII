@@ -7,7 +7,6 @@ El enfoque utiliza modelos de aprendizaje profundo capaces de analizar m¨²ltiple
 Se implementa un pipeline completo que incluye procesamiento de datos, entrenamiento, validaci¨®n y evaluaci¨®n con m¨¦tricas como AUC-ROC y F1-score.  
 El sistema busca mejorar la precisi¨®n, objetividad y escalabilidad del proceso de autenticaci¨®n en escenarios reales del contexto peruano.
 
-
 ## Objetivo General
 
 Desarrollar un sistema de autenticaci¨®n autom¨¢tica de art¨ªculos de moda frente a falsificaciones de alta calidad, basado en el an¨¢lisis de im¨¢genes capturadas mediante tel¨¦fonos celulares, que permita mejorar la precisi¨®n, objetividad y escalabilidad del proceso de verificaci¨®n en el contexto peruano.
@@ -31,14 +30,14 @@ Se implementa un enfoque de **One-Class Learning**, donde el modelo se entrena ¨
 
 La decisi¨®n final se basa en un umbral definido por percentiles:
 
--  **Aut¨¦ntico**: si la distancia es menor al umbral  
--  **Rechazado**: si la distancia supera el umbral  
+- **Aut¨¦ntico**: si la distancia es menor al umbral  
+- **Rechazado**: si la distancia supera el umbral  
 
 Este enfoque permite detectar falsificaciones de alta calidad de manera eficiente, objetiva y escalable.
 
-## DocumentaciÃ³n del Sprint  
+## Documentaci¨®n del Sprint 1
 
-- ðŸ“˜ Reporte completo del proyecto:  
+- Reporte completo del proyecto:  
   [Proyecto Pipeline](docs/Proyecto_Pipeline.pdf)
 
 Este documento incluye:
@@ -46,27 +45,27 @@ Este documento incluye:
 - Pipeline de datos
 - EDA
 - Modelo baseline (EfficientNet-B0)
-- MÃ©tricas (ROC-AUC, pÃ©rdidas, distancias)
+- M¨¦tricas (ROC-AUC, p¨¦rdidas, distancias)
 - Resultados experimentales
-
 
 ## Flujo en base al notebook
 
 1. Dataset genuino organizado por modelo y cartera.
 2. Split por cartera en `train`, `val` y `test`.
-3. AumentaciÃ³n en entrenamiento con:
+3. Aumentaci¨®n en entrenamiento con:
    - RandomResizedCrop
    - ColorJitter
    - GaussianBlur
    - RandomErasing
 4. Modelo EfficientNet-B0 con embedding de 256 dimensiones.
-5. CÃ¡lculo del centro one-class.
+5. C¨¢lculo del centro one-class.
 6. Entrenamiento con OneClassLoss.
-7. CÃ¡lculo de distancias.
-8. CÃ¡lculo de threshold por percentil.
-9. GeneraciÃ³n de fake hard con oclusiÃ³n, affine warp, color jitter y blur.
-10. EvaluaciÃ³n ROC-AUC.
-11. PredicciÃ³n por cartera.
+7. C¨¢lculo de distancias.
+8. C¨¢lculo de threshold por percentil.
+9. Generaci¨®n de fake hard con oclusi¨®n, affine warp, color jitter y blur.
+10. Evaluaci¨®n ROC-AUC.
+11. Predicci¨®n por cartera.
+
 ## Dataset
 
 El dataset no se incluye en este repositorio debido a su tama?o (>1GB).
@@ -77,46 +76,12 @@ Se encuentra disponible en Google Drive:
 
 ## Estructura del dataset
 
-Colocar el dataset genuino aquÃ­:
+Colocar el dataset genuino aqu¨ª:
 
 ```text
 data/genuine/chanel/
-â””â”€â”€ modelo/
-    â””â”€â”€ bag_id/
-        â”œâ”€â”€ img1.jpg
-        â”œâ”€â”€ img2.jpg
-        â””â”€â”€ ...
-```
-
-Ejemplo:
-
-```text
-data/genuine/chanel/classic/
-â””â”€â”€ 112/
-    â”œâ”€â”€ front.jpg
-    â”œâ”€â”€ logo.jpg
-    â””â”€â”€ zipper.jpg
-```
-
-## Ejecutar pipeline completo
-
-```bash
-pip install -r requirements.txt
-python src/main.py
-```
-
-## PredicciÃ³n de una cartera
-
-Coloca imÃ¡genes de una cartera en:
-
-```text
-handbag/112/
-```
-
-Ejecuta:
-
-```bash
-python src/predict_bag.py --bag_dir handbag/112
-```
-
-
+ modelo/
+     bag_id/
+         img1.jpg
+         img2.jpg
+         ...
