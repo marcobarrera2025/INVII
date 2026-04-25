@@ -2,6 +2,19 @@
 
 Este repositorio es una versión modular del notebook `Autenticacion_Carteras.ipynb`.
 
+## 📄 Documentación
+
+- 📘 Reporte completo del proyecto:  
+  [Proyecto Pipeline](docs/Proyecto_Pipeline.pdf)
+
+Este documento incluye:
+- Resumen ejecutivo
+- Pipeline de datos
+- EDA
+- Modelo baseline (EfficientNet-B0)
+- Métricas (ROC-AUC, pérdidas, distancias)
+- Resultados experimentales
+
 ## Flujo fiel al notebook
 
 1. Dataset genuino organizado por modelo y cartera.
