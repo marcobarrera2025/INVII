@@ -1,41 +1,41 @@
-# Autenticaci¨®n Autom¨¢tica de Carteras de Lujo mediante Deep Learning y Visi¨®n por Computadora
+# AutenticaciÃ³n AutomÃ¡tica de Carteras de Lujo mediante Deep Learning y VisiÃ³n por Computadora
 
-## Descripci¨®n
+## DescripciÃ³n
 
-Este proyecto desarrolla un sistema de autenticaci¨®n autom¨¢tica de carteras de lujo mediante inteligencia artificial y an¨¢lisis de im¨¢genes capturadas con tel¨¦fonos m¨®viles.  
-El enfoque utiliza modelos de aprendizaje profundo capaces de analizar m¨²ltiples componentes del producto, como logotipos, costuras, texturas y herrajes, permitiendo una evaluaci¨®n m¨¢s precisa frente a falsificaciones de alta calidad.  
-Se implementa un pipeline completo que incluye procesamiento de datos, entrenamiento, validaci¨®n y evaluaci¨®n con m¨¦tricas como AUC-ROC y F1-score.  
-El sistema busca mejorar la precisi¨®n, objetividad y escalabilidad del proceso de autenticaci¨®n en escenarios reales del contexto peruano.
+Este proyecto desarrolla un sistema de autenticaciÃ³n automÃ¡tica de carteras de lujo mediante inteligencia artificial y anÃ¡lisis de imÃ¡genes capturadas con telÃ©fonos mÃ³viles.  
+El enfoque utiliza modelos de aprendizaje profundo capaces de analizar mÃºltiples componentes del producto, como logotipos, costuras, texturas y herrajes, permitiendo una evaluaciÃ³n mÃ¡s precisa frente a falsificaciones de alta calidad.  
+Se implementa un pipeline completo que incluye procesamiento de datos, entrenamiento, validaciÃ³n y evaluaciÃ³n con mÃ©tricas como AUC-ROC y F1-score.  
+El sistema busca mejorar la precisiÃ³n, objetividad y escalabilidad del proceso de autenticaciÃ³n en escenarios reales del contexto peruano.
 
 ## Objetivo General
 
-Desarrollar un sistema de autenticaci¨®n autom¨¢tica de art¨ªculos de moda frente a falsificaciones de alta calidad, basado en el an¨¢lisis de im¨¢genes capturadas mediante tel¨¦fonos celulares, que permita mejorar la precisi¨®n, objetividad y escalabilidad del proceso de verificaci¨®n en el contexto peruano.
+Desarrollar un sistema de autenticaciÃ³n automÃ¡tica de artÃ­culos de moda frente a falsificaciones de alta calidad, basado en el anÃ¡lisis de imÃ¡genes capturadas mediante telÃ©fonos celulares, que permita mejorar la precisiÃ³n, objetividad y escalabilidad del proceso de verificaciÃ³n en el contexto peruano.
 
-## Tecnolog¨ªas Utilizadas
+## TecnologÃ­as Utilizadas
 
-- **Python**: Lenguaje principal utilizado para el desarrollo del pipeline de procesamiento, entrenamiento y evaluaci¨®n del modelo.
-- **PyTorch**: Framework de deep learning empleado para la construcci¨®n y entrenamiento del modelo.
-- **Torchvision**: Librer¨ªa utilizada para modelos preentrenados (EfficientNet-B0) y transformaciones de im¨¢genes.
-- **NumPy**: Manejo de operaciones num¨¦ricas y c¨¢lculo de distancias entre embeddings.
-- **Pillow (PIL)**: Carga y procesamiento b¨¢sico de im¨¢genes.
-- **Scikit-learn**: Evaluaci¨®n del modelo mediante m¨¦tricas como ROC-AUC y curva ROC.
-- **Matplotlib**: Visualizaci¨®n de resultados y m¨¦tricas.
+- **Python**: Lenguaje principal utilizado para el desarrollo del pipeline de procesamiento, entrenamiento y evaluaciÃ³n del modelo.
+- **PyTorch**: Framework de deep learning empleado para la construcciÃ³n y entrenamiento del modelo.
+- **Torchvision**: LibrerÃ­a utilizada para modelos preentrenados (EfficientNet-B0) y transformaciones de imÃ¡genes.
+- **NumPy**: Manejo de operaciones numÃ©ricas y cÃ¡lculo de distancias entre embeddings.
+- **Pillow (PIL)**: Carga y procesamiento bÃ¡sico de imÃ¡genes.
+- **Scikit-learn**: EvaluaciÃ³n del modelo mediante mÃ©tricas como ROC-AUC y curva ROC.
+- **Matplotlib**: VisualizaciÃ³n de resultados y mÃ©tricas.
 - **TQDM**: Monitoreo del progreso durante el entrenamiento.
 
 ## Modelo Utilizado
 
-El sistema utiliza **EfficientNet-B0** como extractor de caracter¨ªsticas visuales, generando embeddings representativos de cada imagen.
+El sistema utiliza **EfficientNet-B0** como extractor de caracterÃ­sticas visuales, generando embeddings representativos de cada imagen.
 
-Se implementa un enfoque de **One-Class Learning**, donde el modelo se entrena ¨²nicamente con im¨¢genes de carteras aut¨¦nticas. A partir de ello, se calcula un centro de embeddings y se eval¨²an nuevas im¨¢genes midiendo su distancia respecto a este centro.
+Se implementa un enfoque de **One-Class Learning**, donde el modelo se entrena Ãºnicamente con imÃ¡genes de carteras autÃ©nticas. A partir de ello, se calcula un centro de embeddings y se evalÃºan nuevas imÃ¡genes midiendo su distancia respecto a este centro.
 
-La decisi¨®n final se basa en un umbral definido por percentiles:
+La decisiÃ³n final se basa en un umbral definido por percentiles:
 
-- **Aut¨¦ntico**: si la distancia es menor al umbral  
-- **Rechazado**: si la distancia supera el umbral  
+- **AutÃ©ntico**: si la distancia es menor al umbral
+- **Rechazado**: si la distancia supera el umbral
 
 Este enfoque permite detectar falsificaciones de alta calidad de manera eficiente, objetiva y escalable.
 
-## Documentaci¨®n del Sprint 1
+## DocumentaciÃ³n del Sprint 1
 
 - Reporte completo del proyecto:  
   [Proyecto Pipeline](docs/Proyecto_Pipeline.pdf)
@@ -45,43 +45,75 @@ Este documento incluye:
 - Pipeline de datos
 - EDA
 - Modelo baseline (EfficientNet-B0)
-- M¨¦tricas (ROC-AUC, p¨¦rdidas, distancias)
+- MÃ©tricas (ROC-AUC, pÃ©rdidas, distancias)
 - Resultados experimentales
 
 ## Flujo en base al notebook
 
 1. Dataset genuino organizado por modelo y cartera.
 2. Split por cartera en `train`, `val` y `test`.
-3. Aumentaci¨®n en entrenamiento con:
+3. AumentaciÃ³n en entrenamiento con:
    - RandomResizedCrop
    - ColorJitter
    - GaussianBlur
    - RandomErasing
 4. Modelo EfficientNet-B0 con embedding de 256 dimensiones.
-5. C¨¢lculo del centro one-class.
+5. CÃ¡lculo del centro one-class.
 6. Entrenamiento con OneClassLoss.
-7. C¨¢lculo de distancias.
-8. C¨¢lculo de threshold por percentil.
-9. Generaci¨®n de fake hard con oclusi¨®n, affine warp, color jitter y blur.
-10. Evaluaci¨®n ROC-AUC.
-11. Predicci¨®n por cartera.
+7. CÃ¡lculo de distancias.
+8. CÃ¡lculo de threshold por percentil.
+9. GeneraciÃ³n de fake hard con oclusiÃ³n, affine warp, color jitter y blur.
+10. EvaluaciÃ³n ROC-AUC.
+11. PredicciÃ³n por cartera.
 
 ## Dataset
 
-El dataset no se incluye en este repositorio debido a su tama?o (>1GB).
+El dataset no se incluye en este repositorio debido a su tamaÃ±o (>1GB).
 
 Se encuentra disponible en Google Drive:
 
- [Descargar dataset](https://drive.google.com/file/d/1LdI5wrySA2Rrj32BoNPPDrwc6fM8g4QV/view?usp=sharing)
+[Descargar dataset](https://drive.google.com/file/d/1LdI5wrySA2Rrj32BoNPPDrwc6fM8g4QV/view?usp=sharing)
 
 ## Estructura del dataset
 
-Colocar el dataset genuino aqu¨ª:
+Colocar el dataset genuino aquÃ­:
 
 ```text
 data/genuine/chanel/
- modelo/
-     bag_id/
-         img1.jpg
-         img2.jpg
-         ...
+â””â”€â”€ modelo/
+    â””â”€â”€ bag_id/
+        â”œâ”€â”€ img1.jpg
+        â”œâ”€â”€ img2.jpg
+        â””â”€â”€ ...
+```
+
+Ejemplo:
+
+```text
+data/genuine/chanel/classic/
+â””â”€â”€ 112/
+    â”œâ”€â”€ front.jpg
+    â”œâ”€â”€ logo.jpg
+    â””â”€â”€ zipper.jpg
+```
+
+## Ejecutar pipeline completo
+
+```bash
+pip install -r requirements.txt
+python src/main.py
+```
+
+## PredicciÃ³n de una cartera
+
+Coloca imÃ¡genes de una cartera en:
+
+```text
+handbag/112/
+```
+
+Ejecuta:
+
+```bash
+python src/predict_bag.py --bag_dir handbag/112
+```
