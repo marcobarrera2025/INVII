@@ -2,7 +2,7 @@
 
 Este repositorio es una versión modular del notebook `Autenticacion_Carteras.ipynb`.
 
-## 📄 Documentación
+## Documentación
 
 - 📘 Reporte completo del proyecto:  
   [Proyecto Pipeline](docs/Proyecto_Pipeline.pdf)
@@ -32,7 +32,7 @@ Este documento incluye:
 9. Generación de fake hard con oclusión, affine warp, color jitter y blur.
 10. Evaluación ROC-AUC.
 11. Predicción por cartera.
-## ?? Dataset
+## Dataset
 
 El dataset no se incluye en este repositorio debido a su tama?o (>1GB).
 
