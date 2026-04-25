@@ -38,7 +38,7 @@ El dataset no se incluye en este repositorio debido a su tama?o (>1GB).
 
 Se encuentra disponible en Google Drive:
 
-?? [Link al dataset]https://drive.google.com/file/d/1LdI5wrySA2Rrj32BoNPPDrwc6fM8g4QV/view?usp=sharing
+ [Link al dataset]https://drive.google.com/file/d/1LdI5wrySA2Rrj32BoNPPDrwc6fM8g4QV/view?usp=sharing
 
 ## Estructura del dataset
 
