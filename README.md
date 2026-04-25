@@ -15,7 +15,7 @@ Este documento incluye:
 - Métricas (ROC-AUC, pérdidas, distancias)
 - Resultados experimentales
 
-## Flujo fiel al notebook
+## Flujo en base al notebook
 
 1. Dataset genuino organizado por modelo y cartera.
 2. Split por cartera en `train`, `val` y `test`.
@@ -32,8 +32,15 @@ Este documento incluye:
 9. Generación de fake hard con oclusión, affine warp, color jitter y blur.
 10. Evaluación ROC-AUC.
 11. Predicción por cartera.
+## ?? Dataset
 
-## Estructura esperada del dataset
+El dataset no se incluye en este repositorio debido a su tama?o (>1GB).
+
+Se encuentra disponible en Google Drive:
+
+?? [Link al dataset]https://drive.google.com/file/d/1LdI5wrySA2Rrj32BoNPPDrwc6fM8g4QV/view?usp=sharing
+
+## Estructura del dataset
 
 Colocar el dataset genuino aquí:
 
