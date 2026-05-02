@@ -28,6 +28,10 @@ El modelo sigue un enfoque de clasificación binaria supervisada:
 - Fake  
 - Genuine  
 
+## Documentación del Pipeline
+
+[Proyecto Pipeline](docs/Proyecto_Pipeline.pdf)
+
 ## Flujo en base al notebook
 
 1. Dataset organizado en genuine y fake  
@@ -42,4 +46,3 @@ El modelo sigue un enfoque de clasificación binaria supervisada:
 ## Dataset
 
 https://drive.google.com/file/d/1LdI5wrySA2Rrj32BoNPPDrwc6fM8g4QV/view
-
