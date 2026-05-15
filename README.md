@@ -59,6 +59,81 @@ Además, se aplicaron técnicas de aumento de datos y balanceo de clases mediant
 8. Generación de métricas de clasificación y matriz de confusión para las clases genuine y fake
 
 
+## yolo_chanel 
+
+## Entorno de ejecucion
+
+- Plataforma: Google Colab
+- Acelerador: GPU
+- GPU utilizada: NVIDIA A100-SXM4-40GB
+- Libreria principal: Ultralytics YOLO
+- Version registrada: `ultralytics 8.4.51`
+- Modelo base: `yolov8n.pt`
+
+## Dataset
+
+El dataset se carga desde Google Drive como archivo comprimido `DATASET.zip` y se descomprime en `/content/work/DATASET`.
+
+Estructura detectada:
+
+| Division | Imagenes | Anotaciones TXT |
+|---|---:|---:|
+| Entrenamiento | 713 | 713 |
+| Validacion | 108 | 108 |
+| **Total** | **821** | **821** |
+
+Resumen de validacion del dataset:
+
+- Imagenes corruptas: 0
+- Imagenes sin anotaciones: 0
+- Total de instancias en validacion: 110
+- Clases del modelo:
+  - `logo`
+  - `turnlock`
+
+Distribucion de instancias en validacion:
+
+| Clase | Instancias |
+|---|---:|
+| logo | 14 |
+| turnlock | 96 |
+
+## Configuracion del entrenamiento
+
+| Parametro | Valor |
+|---|---:|
+| Modelo | `yolov8n.pt` |
+| Tamano de imagen | 640 |
+| Epocas configuradas | 80 |
+| Batch size | 64 |
+| Workers | 8 |
+| Optimizador | AdamW automatico |
+| AMP | Activado |
+| Cache | Activado |
+| Paciencia early stopping | 10 |
+
+El entrenamiento estaba configurado para 80 epocas, pero se detuvo automaticamente en la epoca 12 por falta de mejora durante 10 epocas consecutivas.
+
+## Resultados
+
+Metricas finales del mejor modelo en validacion:
+
+| Metrica | Valor |
+|---|---:|
+| Precision | 0.00298 |
+| Recall | 0.88690 |
+| mAP50 | 0.75852 |
+| mAP50-95 | 0.46104 |
+
+Resultados por clase en mAP50-95:
+
+| Clase | mAP50-95 |
+|---|---:|
+| logo | 0.44577 |
+| turnlock | 0.47631 |
+
+
+
 ## Dataset
 
 https://drive.google.com/drive/folders/1rO40Dx3AqRcatTunt6by7Mrim1Oj-I5T?usp=sharing
