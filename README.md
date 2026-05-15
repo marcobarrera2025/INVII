@@ -59,7 +59,8 @@ Además, se aplicaron técnicas de aumento de datos y balanceo de clases mediant
 8. Generación de métricas de clasificación y matriz de confusión para las clases genuine y fake
 
 
-## yolo_chanel 
+## MODELO DE DETECCIÓN 
+LINK CUADERNO: [Cuaderno](notebooks/yolo_chanel.ipynb)
 
 ## Entorno de ejecucion
 
