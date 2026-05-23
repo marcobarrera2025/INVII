@@ -138,3 +138,51 @@ Resultados por clase en mAP50-95:
 ## Dataset
 
 https://drive.google.com/drive/folders/1rO40Dx3AqRcatTunt6by7Mrim1Oj-I5T?usp=sharing
+
+## Comparación v03 vs v04
+
+Notebooks comparados:
+
+- [Autenticacion_Carteras__Metricas_v03](notebooks/Autenticacion_Carteras__Metricas_v03.ipynb)
+- [Autenticacion_Carteras__Metricas_v04](notebooks/Autenticacion_Carteras__Metricas_v04.ipynb)
+
+### Modelo general de autenticación
+
+| Métrica | v03 | v04 |
+|---|---:|---:|
+| Test loss | 0.35175031423568726 | 0.35175031423568726 |
+| Test accuracy | 0.8469342589378357 | 0.8469342589378357 |
+| Accuracy reportada | 0.85 | 0.85 |
+| Macro F1-score | 0.84 | 0.84 |
+| Weighted F1-score | 0.85 | 0.85 |
+
+### Modelo de partes
+
+| Métrica | v03 | v04 |
+|---|---:|---:|
+| Total de imágenes | 316 | 2129 |
+| Train | 253 | 1704 |
+| Validation | 63 | 425 |
+| Validation loss | 0.5976 | 0.3709 |
+| Validation accuracy | 0.6984 | 0.9035 |
+| Macro F1-score | 0.66 | 0.68 |
+| Weighted F1-score | 0.70 | 0.93 |
+
+### Distribución del dataset de partes en v04
+
+| Carpeta | Cantidad de imágenes |
+|---|---:|
+| genuine/bag---boy | 1632 |
+| genuine/bag---2.55 | 414 |
+| fake/bag---boy | 51 |
+| fake/bag---2.55 | 32 |
+| **Total** | **2129** |
+
+### Reporte por clase del modelo de partes en v04
+
+| Clase | Precision | Recall | F1-score | Support |
+|---|---:|---:|---:|---:|
+| Fake | 0.27 | 0.94 | 0.42 | 16 |
+| Genuine | 1.00 | 0.90 | 0.95 | 409 |
+| Macro avg | 0.64 | 0.92 | 0.68 | 425 |
+| Weighted avg | 0.97 | 0.90 | 0.93 | 425 |
