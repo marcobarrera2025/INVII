@@ -184,5 +184,10 @@ Notebooks comparados:
 |---|---:|---:|---:|---:|
 | Fake | 0.27 | 0.94 | 0.42 | 16 |
 | Genuine | 1.00 | 0.90 | 0.95 | 409 |
+
+Promedios del reporte:
+
+| Promedio | Precision | Recall | F1-score | Support |
+|---|---:|---:|---:|---:|
 | Macro avg | 0.64 | 0.92 | 0.68 | 425 |
 | Weighted avg | 0.97 | 0.90 | 0.93 | 425 |
