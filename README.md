@@ -331,5 +331,103 @@ ResNet50 obtuvo el mejor rendimiento de la version v06, superando tanto a Effici
 | 3 | MobileNetV2 | 0.828221 | 0.434094 | 82.822084 | 17.177916 |
 
 
+## Actualizacion v07
 
+La version v07 mantiene el dataset `Chanel_Parts.zip` con 2446 imagenes y refuerza la evaluacion con graficas comparativas, matriz de confusion y validacion K-Fold para buscar umbrales globales.
+
+| Modelo | Accuracy val | Loss val | Mejor epoca accuracy | Mejor epoca loss |
+|---|---:|---:|---:|---:|
+| ResNet50 | 0.926380 | 0.235909 | 18 | 18 |
+| EfficientNetB0 | 0.873211 | 0.357648 | 20 | 20 |
+| MobileNetV2 | 0.844581 | 0.430654 | 19 | 19 |
+
+Resumen K-Fold v07 para umbral global:
+
+| Modelo | Umbral promedio | Accuracy promedio | Precision promedio | Recall promedio | F1 promedio |
+|---|---:|---:|---:|---:|---:|
+| ResNet50 | 0.682 | 0.662571 | 0.866330 | 0.704456 | 0.768646 |
+| EfficientNetB0 | 0.918 | 0.245740 | 1.000000 | 0.091268 | 0.152726 |
+| MobileNetV2 | 0.908 | 0.210562 | 1.000000 | 0.049353 | 0.090633 |
+
+## Actualizacion v08
+
+La version v08 reemplaza las arquitecturas ligeras/anteriormente usadas por modelos mas actuales y registra tiempos de entrenamiento. Se evaluan:
+
+- EfficientNetB3 con imagenes de 300 x 300
+- MobileNetV3Large con imagenes de 224 x 224
+- ResNet50 con imagenes de 224 x 224
+
+Dataset y division usados en v08:
+
+| Conjunto / clase | Cantidad |
+|---|---:|
+| Total de imagenes | 2446 |
+| Entrenamiento | 1957 |
+| Validacion | 489 |
+| Fake en validacion | 83 |
+| Genuine en validacion | 406 |
+
+Distribucion del dataset:
+
+| Carpeta | Imagenes |
+|---|---:|
+| genuine/bag---boy | 1632 |
+| genuine/bag---2.55 | 414 |
+| fake/bag---boy | 200 |
+| fake/bag---2.55 | 200 |
+| Total | 2446 |
+
+### Ranking v08 por evaluacion final
+
+| Ranking | Modelo | Accuracy | Loss | Accuracy (%) | Error (%) |
+|---:|---|---:|---:|---:|---:|
+| 1 | ResNet50 | 0.932515 | 0.219140 | 93.251532 | 6.748468 |
+| 2 | MobileNetV3 | 0.912065 | 0.270404 | 91.206545 | 8.793455 |
+| 3 | EfficientNetB3 | 0.883436 | 0.343516 | 88.343561 | 11.656439 |
+
+### Mejores metricas de validacion v08
+
+| Modelo | Mejor Val Accuracy | Mejor Val Loss | Epocas | Tiempo total |
+|---|---:|---:|---:|---:|
+| ResNet50 | 0.932515 | 0.219140 | 20 | 65.42 s |
+| MobileNetV3 | 0.918200 | 0.270405 | 20 | 81.78 s |
+| EfficientNetB3 | 0.883436 | 0.343516 | 20 | 188.02 s |
+
+### Reporte de clasificacion v08
+
+| Modelo | Clase | Precision | Recall | F1-score | Support |
+|---|---|---:|---:|---:|---:|
+| EfficientNetB3 | Fake | 0.62 | 0.80 | 0.70 | 83 |
+| EfficientNetB3 | Genuine | 0.96 | 0.90 | 0.93 | 406 |
+| MobileNetV3 | Fake | 0.68 | 0.90 | 0.78 | 83 |
+| MobileNetV3 | Genuine | 0.98 | 0.91 | 0.95 | 406 |
+| ResNet50 | Fake | 0.78 | 0.84 | 0.81 | 83 |
+| ResNet50 | Genuine | 0.97 | 0.95 | 0.96 | 406 |
+
+| Modelo | Accuracy | Macro F1 | Weighted F1 |
+|---|---:|---:|---:|
+| ResNet50 | 0.93 | 0.88 | 0.93 |
+| MobileNetV3 | 0.91 | 0.86 | 0.92 |
+| EfficientNetB3 | 0.88 | 0.81 | 0.89 |
+
+### K-Fold de umbral global v08
+
+| Modelo | Umbral promedio | Umbral mediana | Accuracy promedio | Precision promedio | Recall promedio | F1 promedio |
+|---|---:|---:|---:|---:|---:|---:|
+| MobileNetV3 | 0.536 | 0.50 | 0.897517 | 0.985737 | 0.889100 | 0.933766 |
+| ResNet50 | 0.636 | 0.63 | 0.897559 | 0.989702 | 0.886540 | 0.933656 |
+| EfficientNetB3 | 0.652 | 0.65 | 0.785357 | 0.994118 | 0.746281 | 0.850238 |
+
+## Comparacion v07 vs v08
+
+| Aspecto | v07 | v08 |
+|---|---:|---:|
+| Mejor modelo por accuracy | ResNet50 | ResNet50 |
+| Mejor accuracy final | 0.926380 | 0.932515 |
+| Mejor loss final | 0.235909 | 0.219140 |
+| Mejor F1 promedio K-Fold | 0.768646 | 0.933766 |
+| Mejor umbral promedio K-Fold | 0.682 | 0.536 |
+| F1 Fake del mejor modelo | 0.16 | 0.81 |
+
+En v08 el mejor resultado global sigue siendo ResNet50, pero MobileNetV3 queda muy cerca en K-Fold. La mejora principal frente a v07 esta en la clase `Fake`: el F1 del mejor modelo sube de 0.16 a 0.81 y el F1 promedio K-Fold sube de 0.768646 a 0.933766.
 
