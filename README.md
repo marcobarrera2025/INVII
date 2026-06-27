@@ -431,3 +431,8 @@ Distribucion del dataset:
 
 En v08 el mejor resultado global sigue siendo ResNet50, pero MobileNetV3 queda muy cerca en K-Fold. La mejora principal frente a v07 esta en la clase `Fake`: el F1 del mejor modelo sube de 0.16 a 0.81 y el F1 promedio K-Fold sube de 0.768646 a 0.933766.
 
+
+
+## MATRIZ DE CONSISTENCIA
+LINK MATRIZ: [Matriz](docs/MATRIZ_CONSISTENCIA.pdf)
+
