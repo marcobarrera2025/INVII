@@ -436,3 +436,152 @@ En v08 el mejor resultado global sigue siendo ResNet50, pero MobileNetV3 queda m
 ## MATRIZ DE CONSISTENCIA
 LINK MATRIZ: [Matriz](docs/MATRIZ_CONSISTENCIA.pdf)
 
+
+
+
+## Resumen del notebook v09
+
+El notebook  entrena y evalua modelos de clasificacion binaria para autenticar partes de carteras Chanel. Las clases usadas son:
+
+- `Fake`
+- `Genuine`
+
+Dataset usado:
+
+| Dato | Valor |
+|---|---:|
+| Total de imagenes | 2446 |
+| Entrenamiento | 1957 |
+| Validacion | 489 |
+| Clases | 2 |
+| Fake en validacion | 83 |
+| Genuine en validacion | 406 |
+
+Modelos evaluados:
+
+- EfficientNetB3
+- MobileNetV3
+- ResNet50
+
+## Metricas finales
+
+| Ranking | Modelo | Accuracy | Loss | Accuracy (%) | Error (%) |
+|---:|---|---:|---:|---:|---:|
+| 1 | ResNet50 | 0.930470 | 0.232789 | 93.047035 | 6.952965 |
+| 2 | MobileNetV3 | 0.924335 | 0.258596 | 92.433536 | 7.566464 |
+| 3 | EfficientNetB3 | 0.901841 | 0.330935 | 90.184051 | 9.815949 |
+
+## Reporte por clase
+
+### EfficientNetB3
+
+| Clase | Precision | Recall | F1-score | Support |
+|---|---:|---:|---:|---:|
+| Fake | 0.67 | 0.83 | 0.74 | 83 |
+| Genuine | 0.96 | 0.92 | 0.94 | 406 |
+| Accuracy |  |  | 0.90 | 489 |
+| Macro avg | 0.82 | 0.87 | 0.84 | 489 |
+| Weighted avg | 0.91 | 0.90 | 0.91 | 489 |
+
+### MobileNetV3
+
+| Clase | Precision | Recall | F1-score | Support |
+|---|---:|---:|---:|---:|
+| Fake | 0.72 | 0.92 | 0.80 | 83 |
+| Genuine | 0.98 | 0.93 | 0.95 | 406 |
+| Accuracy |  |  | 0.92 | 489 |
+| Macro avg | 0.85 | 0.92 | 0.88 | 489 |
+| Weighted avg | 0.94 | 0.92 | 0.93 | 489 |
+
+### ResNet50
+
+| Clase | Precision | Recall | F1-score | Support |
+|---|---:|---:|---:|---:|
+| Fake | 0.76 | 0.87 | 0.81 | 83 |
+| Genuine | 0.97 | 0.94 | 0.96 | 406 |
+| Accuracy |  |  | 0.93 | 489 |
+| Macro avg | 0.86 | 0.91 | 0.88 | 489 |
+| Weighted avg | 0.94 | 0.93 | 0.93 | 489 |
+
+## K-Fold y umbral
+
+| Modelo | Umbral promedio | Umbral mediana | Accuracy promedio | Precision promedio | Recall promedio | F1 promedio |
+|---|---:|---:|---:|---:|---:|---:|
+| EfficientNetB3 | 0.610 | 0.57 | 0.832359 | 0.988960 | 0.807980 | 0.884800 |
+| MobileNetV3 | 0.548 | 0.55 | 0.914054 | 0.989296 | 0.906384 | 0.945650 |
+| ResNet50 | 0.614 | 0.58 | 0.893457 | 0.989568 | 0.881632 | 0.930844 |
+
+## Analisis de errores
+
+En la parte final del notebook se agrega un analisis de errores 
+
+Metricas del segmento analizado:
+
+| Metrica | Valor |
+|---|---:|
+| n | 489 |
+| Accuracy | 0.977505 |
+| Precision | 1.000000 |
+| Recall | 0.977505 |
+| F1-score | 0.988625 |
+| Error rate | 0.022495 |
+| TP | 478 |
+| FP | 0 |
+| FN | 11 |
+| TN | 0 |
+
+Intervalos de confianza:
+
+| Metrica | Valor | IC 95% |
+|---|---:|---:|
+| Accuracy | 0.977505 | [0.963, 0.990] |
+| F1-score | 0.988625 | [0.981, 0.995] |
+
+Calibracion:
+
+| Metrica | Valor |
+|---|---:|
+| Brier Score global | 0.0221 |
+| Brier Score por slice | 0.022084 |
+
+## Baseline vs umbral ajustado
+
+| Experimento | Umbral | Accuracy | Precision | Recall | F1 |
+|---|---:|---:|---:|---:|---:|
+| Baseline | 0.50 | 0.977505 | 1.000000 | 0.977505 | 0.988625 |
+| Mitigacion | 0.81 | 0.912065 | 1.000000 | 0.912065 | 0.954011 |
+
+Con el umbral base de `0.50`, el segmento evaluado tuvo mejor F1. Al subir el umbral a `0.81`, la precision se mantiene en 1.00, pero baja el recall y tambien baja el F1.
+
+## Errores encontrados
+
+| Tipo de error | Cantidad |
+|---|---:|
+| Falsos positivos | 0 |
+| Falsos negativos | 11 |
+
+Los errores guardados corresponden a imagenes `Genuine` clasificadas como `Fake`. Algunos ejemplos registrados en el notebook:
+
+| Archivo | Real | Prediccion | Probabilidad Genuine | Tipo |
+|---|---|---|---:|---|
+| turnlock_0629.jpg | Genuine | Fake | 0.413993 | FN |
+| turnlock_0631.jpg | Genuine | Fake | 0.499506 | FN |
+| turnlock_0760.jpg | Genuine | Fake | 0.494417 | FN |
+| turnlock_0900.jpg | Genuine | Fake | 0.311961 | FN |
+| turnlock_0904.jpg | Genuine | Fake | 0.211491 | FN |
+
+
+
+## Resultado resumido
+
+| Punto | Resultado |
+|---|---|
+| Mejor modelo por accuracy final | ResNet50 |
+| Accuracy de ResNet50 | 93.047035% |
+| Mejor modelo por F1 promedio K-Fold | MobileNetV3 |
+| F1 promedio K-Fold de MobileNetV3 | 0.945650 |
+| Mejor F1 en clase Fake | ResNet50, 0.81 |
+| Errores detectados en el slice revisado | 11 FN y 0 FP |
+| Brier Score global | 0.0221 |
+
+
